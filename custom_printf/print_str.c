@@ -11,26 +11,17 @@ int print_str(char *str)
 {
 	int i, count;
 
-	count = strlen(str);
-	if (str != NULL)
-	{
-		i = 0;
-		while (str[i] < count)
-		{
-			write(1, str, 1);
-			str++;
-		}
-	}
-	else
+	if (str == NULL)
 	{
 		str = "(null)";
-		count = strlen(str);
-		i = 0;
-		while (str[i] < count)
-		{
-			write(1, str, 1);
-			str++;
-		}
+	}
+
+	count = strlen(str);
+	i = 0;
+	while (i < count)
+	{
+		write(1, str + i, 1);
+		i++;
 	}
 	return (count);
 }
