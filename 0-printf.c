@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			write(1, format, 1);
+			write(1, format + i, 1);
 			count++;
 		}
 		else
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 				default:
 					cent = '%';
 					write(1, &cent, 1);
-					write(1, format, 1);
+					write(1, format + i, 1);
 					count += 2;
 					break;
 			}
