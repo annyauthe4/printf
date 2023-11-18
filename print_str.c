@@ -13,12 +13,12 @@ int print_str(const char *str)
 	if (str == NULL)
 	{
 		str = "(null)";
-		count = strlen(str);
-		i = 0;
-		while (i < count)
+	}
+		while (*str != '\0')
 		{
 			write(1, str, 1);
-			i++;
+			str++;
+			count++;
 		}
 		return (count);
 	}
