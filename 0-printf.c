@@ -8,43 +8,34 @@
 int _printf(const char *format, ...)
 {
 	int count, i;
-	char cent, perc;
 	va_list args_mi;
 
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
 	count = 0;
 	va_start(args_mi, format);
-	for (i = 0; format[i] != '\0'; i++)
+	for (i = 0; i < _strlen(format); i++)
 	{
-		if (format[i] != '%')
+		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			write(1, format + i, 1);
-			count++;
-		}
-		else
-		{
-			i++;
-			switch (format[i])
+			switch (format[i + 1])
 			{
 				case 'c':
 					count += print_ch(va_arg(args_mi, int));
+					i++;
 					break;
 				case 's':
 					count += print_str(va_arg(args_mi, const char *));
+					i++;
 					break;
 				case '%':
-					perc = '%';
-					write(1, &perc, 1);
-					count += 1;
-					break;
-				default:
-					cent = '%';
-					write(1, &cent, 1);
-					write(1, format + i, 1);
-					count += 2;
+					write(1, &format[i + 1], 1);
+					count++;
 					break;
 			}
+		}
+		else
+		{
+			write(1, &format[i], 1);
+			count++;
 		}
 	}
 	va_end(args_mi);

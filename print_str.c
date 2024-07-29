@@ -6,31 +6,24 @@
   *
   * Return: number of char count
   */
-int print_str(const char *str)
+int print_str(const char *format)
 {
 	int i, count;
+	char *arr;
 
-	if (str == NULL)
+	count = _strlen(format);
+	if (format == NULL)
+		return (-1);
+	arr = malloc(sizeof(char) * (count + 1));
+	if (arr == NULL)
+		return (-1);
+	for (i = 0; i < count; i++)
 	{
-		str = "(null)";
+		arr[i] = format[i];
 	}
-		while (*str != '\0')
-		{
-			write(1, str, 1);
-			str++;
-			count++;
-		}
-		return (count);
-	}
-	else
-	{
-		count = strlen(str);
-		i = 0;
-		while (i < count)
-		{
-			write(1, str, 1);
-			i++;
-		}
-		return (count);
-	}
+	arr[count] = '\0';
+
+	write(1, arr, count);
+	free(arr);
+	return (count);
 }
