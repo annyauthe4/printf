@@ -30,6 +30,15 @@ int _printf(const char *format, ...)
 					write(1, &format[i + 1], 1);
 					count++;
 					break;
+				case 'i':
+					print_int(va_arg(args_mi, int));
+					i++;
+					break;
+				case 'd':
+					print_int(va_arg(args_mi, int));
+					i++;
+					break;
+
 			}
 		}
 		else
