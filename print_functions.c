@@ -87,3 +87,27 @@ int print_ch(int ch)
 	write(1, &ch, 1);
 	return (1);
 }
+
+/**
+  * print_bin - Prints unsigned int in binary
+  * @ch: The value to be converted
+  * Return: void
+  */
+void print_bin(unsigned int num)
+{
+	int len;
+	char arr[12];
+
+	len = 0;
+	if (num <= 0)
+	write(1, "0", 1);
+	while (num > 0)
+	{
+		arr[len++] = ((num % 2) + '0');
+		num /= 2;
+	}
+	while (len > 0)
+	{
+		write(1, &arr[--len], 1);
+	}
+}

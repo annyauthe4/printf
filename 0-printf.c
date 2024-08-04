@@ -38,7 +38,10 @@ int _printf(const char *format, ...)
 					print_int(va_arg(args_mi, int));
 					i++;
 					break;
-
+				case 'b':
+					print_bin(va_arg(args_mi, int));
+					i++;
+					break;
 			}
 		}
 		else

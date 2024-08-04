@@ -9,5 +9,6 @@ int print_str(const char *str);
 int print_ch(int ch);
 int _strlen(const char *format);
 void print_int(int value);
+void print_bin(unsigned int num);
 
 #endif
